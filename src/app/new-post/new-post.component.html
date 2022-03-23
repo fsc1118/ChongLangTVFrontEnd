@@ -1,0 +1,35 @@
+<p class="h3">Create post</p>
+<hr>
+<form>
+
+  <input name="title" [(ngModel)] = "title" type="text" class="form-control" placeholder="Title" required>
+  <span *ngIf="!this.isTitleValid">Invalid</span>
+  <br>
+
+  <editor
+      apiKey="zpdnqoocify6ndmczgh73g0xhuhlehpmbynsrmrd6bhjw0uu"
+      [init]="{
+        icons: 'material',
+        skin: 'borderless',
+        plugins: 'wordcount',
+        menubar: false,
+        min_height: 150
+      }"
+      (onSelectionChange)="onTextChange($event)">
+  </editor>
+  <span *ngIf="!this.isTextValid">Invalid</span>
+  <div class="form-check">
+      <input name="notifyOnReply"
+             class="form-check-input"
+             type="checkbox"
+             value=""
+             [(ngModel)]="notifyOnReply"
+              >
+      <label class="form-check-label">
+        Send me post reply notifications
+      </label>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" (click)="submit()">&nbsp;  Post  &nbsp;</button>
+</form>
+
